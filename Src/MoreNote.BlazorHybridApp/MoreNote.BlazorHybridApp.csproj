@@ -66,4 +66,7 @@
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
         <PackageReference Include="StardustDL.RazorComponents.Vditors" Version="3.8.7" />
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="wwwroot\lib\vditor\" />
+    </ItemGroup>
 </Project>

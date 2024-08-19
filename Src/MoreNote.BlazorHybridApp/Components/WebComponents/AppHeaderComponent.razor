@@ -1,11 +1,12 @@
 ﻿@namespace MoreNote.BlazorHybridApp.Components.WebComponents
+@inject IMessageService _message
 
 <Menu Mode=MenuMode.Horizontal>
 
     <SubMenu Title="笔记本">
         <MenuItemGroup Title="文件">
             <MenuItem>新建</MenuItem>
-            <MenuItem>打开</MenuItem>
+            <MenuItem OnClick="Open">打开</MenuItem>
             <MenuItem>关闭</MenuItem>
             <MenuItem>设置</MenuItem>
         </MenuItemGroup>
@@ -65,5 +66,10 @@
 
 
 @code {
+    public  void Open()
+    {
+        _message.Info("This is a normal message");
+        //var result = await FilePicker.Default.PickAsync(PickOptions.Default);
+    }
 
 }
