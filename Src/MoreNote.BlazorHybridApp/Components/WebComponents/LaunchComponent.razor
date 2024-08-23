@@ -1,0 +1,15 @@
+﻿@namespace MoreNote.BlazorHybridApp.Components.WebComponents
+
+<Modal Title="BasicModal" @bind-Visible="@_visible">
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+</Modal>
+
+@code {
+    bool _visible=false;
+    public void Set(bool value){
+        _visible = value;
+        StateHasChanged();
+    }
+}

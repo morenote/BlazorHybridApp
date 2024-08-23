@@ -1,6 +1,7 @@
 ﻿@namespace MoreNote.BlazorHybridApp.Components.WebComponents
 @inject IMessageService _message
 
+
 <Menu Mode=MenuMode.Horizontal>
 
     <SubMenu Title="笔记本">
@@ -63,12 +64,18 @@
         </MenuItemGroup>
     </SubMenu>
 </Menu>
+<LaunchComponent @ref="launchComponent"></LaunchComponent>
+
 
 
 @code {
+    LaunchComponent launchComponent;
+    bool _visible = false;
     public  void Open()
     {
-        _message.Info("This is a normal message");
+        _visible = true;
+        launchComponent.Set(true);
+        //_message.Info("This is a normal message");
         //var result = await FilePicker.Default.PickAsync(PickOptions.Default);
     }
 
