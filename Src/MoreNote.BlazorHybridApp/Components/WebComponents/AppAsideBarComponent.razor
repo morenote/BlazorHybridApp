@@ -16,10 +16,18 @@
           DataSource="_datas" @ref="_tree"
           OnContextMenu="OpenContextMenu"
           ShowLine="true"
+          ShowLeafIcon="true"
+          CheckOnClickNode="true"
+          Checkable="false"
+          BlockNode="true"
+          SwitcherIcon="down"
           TitleExpression="x => x.DataItem.Title"
           ChildrenExpression="x => x.DataItem.Childs"
           IsLeafExpression="x => x.TreeLevel > 2"
           OnNodeLoadDelayAsync="OnNodeLoadDelayAsync">
+        <SwitcherIconTemplate>
+            <Icon Type="down" />
+        </SwitcherIconTemplate>
         <TitleTemplate Context="node">
             <Dropdown Trigger="new Trigger[] { Trigger.ContextMenu }">
                 <Overlay>
@@ -30,7 +38,7 @@
                     </Menu>
                 </Overlay>
                 <ChildContent>
-                    <span>@node.Title </span>
+                    <span >@node.Title </span>
                 </ChildContent>
             </Dropdown>
         </TitleTemplate>

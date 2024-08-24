@@ -24,8 +24,8 @@
         </SubMenu>
     </SubMenu>
     <SubMenu Title="工具">
-        <MenuItemGroup  Title="Item 1">
-            <MenuItem>Option 3</MenuItem>
+        <MenuItemGroup  Title="系统信息">
+            <MenuItem OnClick="SystemGetInfo">获取</MenuItem>
             <MenuItem>Option 4</MenuItem>
             <SubMenu Title="Sub Menu">
                 <MenuItem>Option 5</MenuItem>
@@ -58,7 +58,7 @@
     </SubMenu>
     <SubMenu Title="服务器">
         <MenuItemGroup Title="远端">
-            <MenuItem >Option 3</MenuItem>
+            <MenuItem OnClick="Login">登录</MenuItem>
             <MenuItem >Option 4</MenuItem>
       
         </MenuItemGroup>
@@ -66,10 +66,20 @@
 </Menu>
 <LaunchComponent @ref="launchComponent"></LaunchComponent>
 
+<LoginModalComponent @ref="loginModalComponent"></LoginModalComponent>
+
+<SystemInfoModalComponent @ref="systemInfoModalComponent"></SystemInfoModalComponent>
+
+
 
 
 @code {
     LaunchComponent launchComponent;
+
+    LoginModalComponent loginModalComponent;
+
+    SystemInfoModalComponent systemInfoModalComponent;
+
     bool _visible = false;
     public  void Open()
     {
@@ -78,5 +88,16 @@
         //_message.Info("This is a normal message");
         //var result = await FilePicker.Default.PickAsync(PickOptions.Default);
     }
+    public void SystemGetInfo()
+    {
+        systemInfoModalComponent.ShowModal(true);
+    }
+    public void Login()
+    {
+
+        loginModalComponent.Set(true);
+    }
+
+
 
 }
