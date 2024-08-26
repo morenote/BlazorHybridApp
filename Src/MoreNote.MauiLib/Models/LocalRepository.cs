@@ -75,12 +75,12 @@ namespace MoreNote.MauiLib.Models
                 // 创建你的新 customer 实例
                 var customer = new Customer
                 {
-                    Name = "John Doe",
+                    Name = "John Doe" + DateTime.Now.ToUniversalTime().ToString(),
                     Phones = new string[] { "8000-0000", "9000-0000" },
                     Age = 39,
                     IsActive = true
                 };
-
+              
                 // 在 Name 字段上创建唯一索引
                 col.EnsureIndex(x => x.Name, true);
 
@@ -88,7 +88,7 @@ namespace MoreNote.MauiLib.Models
                 col.Insert(customer);
 
                 // 更新集合中的一个文档
-                customer.Name = "Joana Doe";
+                customer.Name = "Joana Doe"+DateTime.Now.ToUniversalTime().ToString();
 
                 col.Update(customer);
 

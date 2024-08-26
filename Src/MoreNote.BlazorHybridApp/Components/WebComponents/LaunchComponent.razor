@@ -68,7 +68,16 @@
         _submitting = true;
         await Task.Delay(1000);
         LocalRepository localRepository = LocalRepository.Open(FileSystem.Current.AppDataDirectory);
-        localRepository.Init();
+        try
+        {
+            localRepository.Init();
+        }
+        catch (Exception ex)
+        {
+            
+            throw;
+        }
+        
     }
 
     private void HandleCancel(MouseEventArgs e)
