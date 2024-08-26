@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoreNote.MSync.Models
+namespace MoreNote.MauiLib.Models
 {
     public class LocalHistory
     {

@@ -3,6 +3,8 @@
 @using System.Text.Json
 @inject ModalService ModelService;
 @inject IMessageService _message;
+@using MoreNote.MauiLib.Models;
+
 <Modal Title="My NoteBook"
        OnOk="@HandleOk"
        MaxBodyHeight="500"
@@ -65,7 +67,8 @@
     {
         _submitting = true;
         await Task.Delay(1000);
-      
+        LocalRepository localRepository = LocalRepository.Open(FileSystem.Current.AppDataDirectory);
+        localRepository.Init();
     }
 
     private void HandleCancel(MouseEventArgs e)

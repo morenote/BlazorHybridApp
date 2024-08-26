@@ -69,4 +69,7 @@
     <ItemGroup>
       <Folder Include="wwwroot\lib\vditor\" />
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\MoreNote.MauiLib\MoreNote.MauiLib.csproj" />
+    </ItemGroup>
 </Project>
