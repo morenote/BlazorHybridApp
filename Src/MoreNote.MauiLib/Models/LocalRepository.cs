@@ -61,6 +61,7 @@ namespace MoreNote.MauiLib.Models
         /// </summary>
         public async void Init()
         {
+
             //首先根据配置文件判断是是否是空的
             if (fileSystemServices.File_Exists(this.GetConfigFilePath()))
             {
@@ -77,13 +78,7 @@ namespace MoreNote.MauiLib.Models
             using (var db = new SQLiteContext(DataBase, ""))
             {
                var result= await db.Database.EnsureCreatedAsync();
-                await db.Posts.AddAsync(new Post()
-                {
-                    PostId = 1,
-                    Title = "",
-                    Content = ""
-                });
-                await db.SaveChangesAsync();
+               
             }
         }
     }

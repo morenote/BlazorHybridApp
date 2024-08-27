@@ -39,7 +39,14 @@ namespace MoreNote.SampleLibrary.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite(connectionString);
+            
+            
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
+
         //public static  void Migrate(string dbName)
         //{
         //    using (var db=new SQLiteContext(dbName))
