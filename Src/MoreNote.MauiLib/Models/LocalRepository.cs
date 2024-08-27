@@ -1,7 +1,11 @@
 ﻿using LiteDB;
 
+using Microsoft.EntityFrameworkCore;
+
+
 using MoreNote.MSync.Services.FileSystem;
 using MoreNote.MSync.Services.FileSystem.IMPL;
+using MoreNote.SampleLibrary.Data;
 
 using System;
 using System.Collections.Generic;
@@ -27,17 +31,23 @@ namespace MoreNote.MauiLib.Models
         /// 基路径，可以认为是仓库文件夹的路径 带/
         /// </summary>
         public string? BasePath { get; set; }
-        public VirtualFileSystem fileSystemServices=new LocalFileSystem();
-        public string RepositoryConfigFile { get; set; }="config";
+
+        public VirtualFileSystem fileSystemServices = new LocalFileSystem();
+        public string RepositoryConfigFile { get; set; } = "config";
 
         public string GetConfigFilePath()
         {
             return BasePath + RepositoryConfigFile;
         }
-        public string DataDir { get {string path=Path.Combine(BasePath,"Data") ;return path;} }
-        public string HistoryDir { get {string path=Path.Combine(BasePath, "History") ;return path;} }
-        public string ConfigDir { get {string path=Path.Combine(BasePath, "Config") ;return path;} }
-        public string DataBase { get {string path=Path.Combine(DataDir, "litedb.db") ;return path;} }
+
+        public string DataDir
+        { get { string path = Path.Combine(BasePath, "Data"); return path; } }
+        public string HistoryDir
+        { get { string path = Path.Combine(BasePath, "History"); return path; } }
+        public string ConfigDir
+        { get { string path = Path.Combine(BasePath, "Config"); return path; } }
+        public string DataBase
+        { get { string path = Path.Combine(DataDir, "sqlite3.db"); return path; } }
 
         public static LocalRepository Open(string basePath)
         {
@@ -45,10 +55,11 @@ namespace MoreNote.MauiLib.Models
             localRepository.BasePath = basePath;
             return localRepository;
         }
+
         /// <summary>
         /// 初始化仓库
         /// </summary>
-        public void Init()
+        public async void Init()
         {
             //首先根据配置文件判断是是否是空的
             if (fileSystemServices.File_Exists(this.GetConfigFilePath()))
@@ -63,40 +74,17 @@ namespace MoreNote.MauiLib.Models
 
             //如果不存在config文件夹，创建config文件夹
             fileSystemServices.Directory_CreateDirectory(ConfigDir);
-
-      
-
-            // 打开数据库 (如果不存在则创建)
-            using (var db = new LiteDatabase(DataBase))
+            using (var db = new SQLiteContext(DataBase, ""))
             {
-                // 获得 customer 集合
-                var col = db.GetCollection<Customer>("customers");
-
-                // 创建你的新 customer 实例
-                var customer = new Customer
+               var result= await db.Database.EnsureCreatedAsync();
+                await db.Posts.AddAsync(new Post()
                 {
-                    Name = "John Doe" + DateTime.Now.ToUniversalTime().ToString(),
-                    Phones = new string[] { "8000-0000", "9000-0000" },
-                    Age = 39,
-                    IsActive = true
-                };
-              
-                // 在 Name 字段上创建唯一索引
-                col.EnsureIndex(x => x.Name, true);
-
-                // 插入新的 customer 文档 (Id 是自增的)
-                col.Insert(customer);
-
-                // 更新集合中的一个文档
-                customer.Name = "Joana Doe"+DateTime.Now.ToUniversalTime().ToString();
-
-                col.Update(customer);
-
-                // 使用 LINQ 查询文档 (未使用索引)
-                var results = col.Find(x => x.Age > 20);
+                    PostId = 1,
+                    Title = "",
+                    Content = ""
+                });
+                await db.SaveChangesAsync();
             }
         }
-
-
     }
 }

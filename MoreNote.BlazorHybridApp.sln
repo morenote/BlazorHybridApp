@@ -6,7 +6,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoreNote.BlazorHybridApp", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoreNote.ClientCoreTests", "Src\MoreNote.ClientCoreTests\MoreNote.ClientCoreTests.csproj", "{C96381C9-4E6B-4CAE-80CB-805ECE68C3BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoreNote.MauiLib", "Src\MoreNote.MauiLib\MoreNote.MauiLib.csproj", "{6C915CD8-F302-475B-8D1E-80838089FD99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoreNote.MauiLib", "Src\MoreNote.MauiLib\MoreNote.MauiLib.csproj", "{6C915CD8-F302-475B-8D1E-80838089FD99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoreNote.SampleLibrary", "Src\MoreNote.SampleLibrary\MoreNote.SampleLibrary.csproj", "{DD6A8AD4-F3DC-4048-9DEE-C11CCB856B1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,14 @@ Global
 		{6C915CD8-F302-475B-8D1E-80838089FD99}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6C915CD8-F302-475B-8D1E-80838089FD99}.Release|x64.ActiveCfg = Release|Any CPU
 		{6C915CD8-F302-475B-8D1E-80838089FD99}.Release|x64.Build.0 = Release|Any CPU
+		{DD6A8AD4-F3DC-4048-9DEE-C11CCB856B1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD6A8AD4-F3DC-4048-9DEE-C11CCB856B1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD6A8AD4-F3DC-4048-9DEE-C11CCB856B1B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DD6A8AD4-F3DC-4048-9DEE-C11CCB856B1B}.Debug|x64.Build.0 = Debug|Any CPU
+		{DD6A8AD4-F3DC-4048-9DEE-C11CCB856B1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD6A8AD4-F3DC-4048-9DEE-C11CCB856B1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD6A8AD4-F3DC-4048-9DEE-C11CCB856B1B}.Release|x64.ActiveCfg = Release|Any CPU
+		{DD6A8AD4-F3DC-4048-9DEE-C11CCB856B1B}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
