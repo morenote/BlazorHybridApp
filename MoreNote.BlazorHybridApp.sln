@@ -8,7 +8,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoreNote.ClientCoreTests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoreNote.MauiLib", "Src\MoreNote.MauiLib\MoreNote.MauiLib.csproj", "{6C915CD8-F302-475B-8D1E-80838089FD99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoreNote.SampleLibrary", "Src\MoreNote.SampleLibrary\MoreNote.SampleLibrary.csproj", "{DD6A8AD4-F3DC-4048-9DEE-C11CCB856B1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoreNote.SampleLibrary", "Src\MoreNote.SampleLibrary\MoreNote.SampleLibrary.csproj", "{DD6A8AD4-F3DC-4048-9DEE-C11CCB856B1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,12 +1,12 @@
 ﻿@namespace MoreNote.BlazorHybridApp.Components.WebComponents
 @inject IMessageService _message
-
+@using MoreNote.BlazorHybridApp.Components.WebComponents.MyModal
 
 <Menu Mode=MenuMode.Horizontal>
 
     <SubMenu Title="笔记本">
         <MenuItemGroup Title="文件">
-            <MenuItem>新建</MenuItem>
+            <MenuItem OnClick="Create">新建</MenuItem>
             <MenuItem OnClick="Open">打开</MenuItem>
             <MenuItem>关闭</MenuItem>
             <MenuItem>设置</MenuItem>
@@ -64,29 +64,40 @@
         </MenuItemGroup>
     </SubMenu>
 </Menu>
-<LaunchComponent @ref="launchComponent"></LaunchComponent>
+<LaunchModalComponent @ref="launchComponent"></LaunchModalComponent>
 
 <LoginModalComponent @ref="loginModalComponent"></LoginModalComponent>
 
 <SystemInfoModalComponent @ref="systemInfoModalComponent"></SystemInfoModalComponent>
 
+<CreateNotebookModalComponent @ref="createNotebookModalComponent"></CreateNotebookModalComponent>
 
 
 
 @code {
-    LaunchComponent launchComponent;
+    LaunchModalComponent launchComponent;
 
     LoginModalComponent loginModalComponent;
 
     SystemInfoModalComponent systemInfoModalComponent;
 
+    CreateNotebookModalComponent createNotebookModalComponent;
+
     bool _visible = false;
     public  void Open()
     {
         _visible = true;
-        launchComponent.Set(true);
+        launchComponent.ShowModal();
         //_message.Info("This is a normal message");
         //var result = await FilePicker.Default.PickAsync(PickOptions.Default);
+    }
+
+
+    public void Create()
+    {
+        createNotebookModalComponent.ShowModal();
+
+       
     }
     public void SystemGetInfo()
     {
@@ -95,7 +106,7 @@
     public void Login()
     {
 
-        loginModalComponent.Set(true);
+        loginModalComponent.ShowModal();
     }
 
 

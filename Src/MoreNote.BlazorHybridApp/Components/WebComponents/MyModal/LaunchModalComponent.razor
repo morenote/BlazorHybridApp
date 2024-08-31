@@ -1,4 +1,4 @@
-﻿@namespace MoreNote.BlazorHybridApp.Components.WebComponents
+﻿@namespace MoreNote.BlazorHybridApp.Components.WebComponents.MyModal
 @using System.ComponentModel.DataAnnotations
 @using System.Text.Json
 @inject ModalService ModelService;
@@ -7,7 +7,9 @@
 
 <Modal Title="My NoteBook"
        OnOk="@HandleOk"
-       MaxBodyHeight="500"
+       MaxBodyHeight="400"
+       Width="600"
+       Draggable="true"
        OnCancel="@HandleCancel"
     @bind-Visible="@_visible">
     <AntList DataSource="@data" TItem="BasicItem">
@@ -54,9 +56,10 @@
 
   
 
-    private void ShowModal()
+    public void ShowModal()
     {
         _visible = true;
+        StateHasChanged();
     }
 
     /// <summary>
@@ -102,8 +105,4 @@
 
    
 
-    public void Set(bool value){
-        _visible = value;
-        StateHasChanged();
-    }
 }
